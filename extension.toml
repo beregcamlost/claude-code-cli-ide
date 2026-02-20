@@ -1,0 +1,149 @@
+id = "cc-zed"
+name = "Claude Code Zed"
+description = "Claude Code IDE integration for Zed"
+version = "0.1.0"
+schema_version = 1
+authors = ["beren"]
+repository = ""
+languages = []
+capabilities = []
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[language_servers.claude-code-server]
+languages = [
+    "Astro",
+    "Bash",
+    "C",
+    "C#",
+    "C++",
+    "Clojure",
+    "CMake",
+    "CSS",
+    "Dart",
+    "Diff",
+    "Docker Compose",
+    "Dockerfile",
+    "Elixir",
+    "Elm",
+    "Erlang",
+    "Fish",
+    "Gleam",
+    "GLSL",
+    "Go",
+    "GraphQL",
+    "Haskell",
+    "HCL",
+    "HTML",
+    "Java",
+    "JavaScript",
+    "JSON",
+    "JSONC",
+    "JSX",
+    "Julia",
+    "Kotlin",
+    "LaTeX",
+    "Lua",
+    "Make",
+    "Markdown",
+    "Nix",
+    "Nu",
+    "OCaml",
+    "Perl",
+    "PHP",
+    "Plain Text",
+    "Prisma",
+    "Proto",
+    "Purescript",
+    "Python",
+    "R",
+    "Racket",
+    "Ruby",
+    "Rust",
+    "Scala",
+    "SCSS",
+    "Shell Script",
+    "SQL",
+    "Svelte",
+    "Swift",
+    "Terraform",
+    "TOML",
+    "TSX",
+    "TypeScript",
+    "Typst",
+    "V",
+    "Vue",
+    "WGSL",
+    "XML",
+    "YAML",
+    "Zig",
+]
+
+[language_servers.claude-code-server.language_ids]
+Astro = "astro"
+Bash = "shellscript"
+C = "c"
+"C#" = "csharp"
+"C++" = "cpp"
+Clojure = "clojure"
+CMake = "cmake"
+CSS = "css"
+Dart = "dart"
+Diff = "diff"
+"Docker Compose" = "dockercompose"
+Dockerfile = "dockerfile"
+Elixir = "elixir"
+Elm = "elm"
+Erlang = "erlang"
+Fish = "fish"
+Gleam = "gleam"
+GLSL = "glsl"
+Go = "go"
+GraphQL = "graphql"
+Haskell = "haskell"
+HCL = "hcl"
+HTML = "html"
+Java = "java"
+JavaScript = "javascript"
+JSON = "json"
+JSONC = "jsonc"
+JSX = "javascriptreact"
+Julia = "julia"
+Kotlin = "kotlin"
+LaTeX = "latex"
+Lua = "lua"
+Make = "makefile"
+Markdown = "markdown"
+Nix = "nix"
+Nu = "nushell"
+OCaml = "ocaml"
+Perl = "perl"
+PHP = "php"
+"Plain Text" = "plaintext"
+Prisma = "prisma"
+Proto = "proto"
+Purescript = "purescript"
+Python = "python"
+R = "r"
+Racket = "racket"
+Ruby = "ruby"
+Rust = "rust"
+Scala = "scala"
+SCSS = "scss"
+"Shell Script" = "shellscript"
+SQL = "sql"
+Svelte = "svelte"
+Swift = "swift"
+Terraform = "terraform"
+TOML = "toml"
+TSX = "typescriptreact"
+TypeScript = "typescript"
+Typst = "typst"
+V = "v"
+Vue = "vue"
+WGSL = "wgsl"
+XML = "xml"
+YAML = "yaml"
+Zig = "zig"
