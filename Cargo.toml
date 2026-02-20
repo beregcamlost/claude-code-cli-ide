@@ -2,6 +2,10 @@
 name = "cc-zed"
 version = "0.1.0"
 edition = "2021"
+authors = ["Beregcamlost <beregcamlost@gmail.com>"]
+description = "Claude Code IDE integration for Zed"
+repository = "https://github.com/beregcamlost/cc-zed"
+license = "MIT"
 publish = false
 
 [lib]
