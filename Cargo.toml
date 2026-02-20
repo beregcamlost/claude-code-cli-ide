@@ -1,10 +1,10 @@
 [package]
-name = "cc-zed"
+name = "claude-code-cli-ide"
 version = "0.1.0"
 edition = "2021"
-authors = ["Beregcamlost <beregcamlost@gmail.com>"]
+authors = ["Antoniojose Figueroa <beregcamlost@gmail.com>"]
 description = "Claude Code IDE integration for Zed"
-repository = "https://github.com/beregcamlost/cc-zed"
+repository = "https://github.com/beregcamlost/claude-code-cli-ide"
 license = "MIT"
 publish = false
 

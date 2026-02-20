@@ -2,9 +2,9 @@
 name = "claude-code-server"
 version = "0.1.0"
 edition = "2021"
-authors = ["Beregcamlost <beregcamlost@gmail.com>"]
-description = "Claude Code server binary for cc-zed extension"
-repository = "https://github.com/beregcamlost/cc-zed"
+authors = ["Antoniojose Figueroa <beregcamlost@gmail.com>"]
+description = "Claude Code server binary for claude-code-cli-ide extension"
+repository = "https://github.com/beregcamlost/claude-code-cli-ide"
 license = "MIT"
 
 [[bin]]

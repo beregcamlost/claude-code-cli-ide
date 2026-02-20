@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# install.sh: Sets up the cc-zed extension environment.
+# install.sh: Sets up the claude-code-cli-ide extension environment.
 # - macOS: Installs/updates LaunchAgents (monitor + language updater)
 # - Linux: Installs/updates systemd user services (monitor + language updater timer)
 # - Verifies the server binary exists
 #
 # After running this, install the dev extension in Zed:
-#   Command palette → "zed: install dev extension" → select ~/cc-zed/
+#   Command palette → "zed: install dev extension" → select ~/claude-code-cli-ide/
 
 set -euo pipefail
 
@@ -18,7 +18,7 @@ MONITOR_LABEL="com.claude.zed-monitor"
 LANGUAGES_LABEL="com.claude.zed-languages-update"
 
 log() {
-  echo "[cc-zed install] $*"
+  echo "[claude-code-cli-ide install] $*"
 }
 
 # Verify server binary
