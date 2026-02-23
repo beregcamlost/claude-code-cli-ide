@@ -42,7 +42,12 @@ kill_server() {
   if is_server_running; then
     log "Stopping server (PID $SERVER_PID)"
     kill "$SERVER_PID" 2>/dev/null || true
-    wait "$SERVER_PID" 2>/dev/null || true
+    # Wait up to 3 seconds, then force kill
+    for i in 1 2 3; do
+      is_server_running || break
+      sleep 1
+    done
+    is_server_running && kill -9 "$SERVER_PID" 2>/dev/null || true
     SERVER_PID=""
     log "Server stopped"
   fi

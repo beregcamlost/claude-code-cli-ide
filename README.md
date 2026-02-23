@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/github/v/release/beregcamlost/claude-code-cli-ide?style=flat-square&color=green" alt="Release">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-green?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/languages-65%2B-purple?style=flat-square" alt="Languages">
-  <img src="https://img.shields.io/badge/zed_api-v0.6.0-orange?style=flat-square" alt="Zed API">
+  <img src="https://img.shields.io/badge/zed_api-v0.7.0-orange?style=flat-square" alt="Zed API">
 </p>
 
 ---
