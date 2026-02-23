@@ -323,6 +323,30 @@ systemctl --user status claude-zed-languages-update.timer
 
 </details>
 
+<details>
+<summary><strong>Broken symlink after directory rename</strong></summary>
+
+If you renamed the project directory (e.g. `cc-zed` → `claude-code-cli-ide`), the dev extension symlink will point to the old path.
+
+**Symptoms:** Extension not loading, LaunchAgents exit code 127.
+
+**Fix:**
+
+```bash
+# Remove broken symlink
+rm ~/Library/Application\ Support/Zed/extensions/installed/claude-code-cli-ide
+
+# Re-install dev extension
+# Cmd+Shift+P > "zed: install dev extension" > select new directory
+
+# Re-run install.sh to update LaunchAgent paths
+bash ~/claude-code-cli-ide/scripts/install.sh
+
+# Restart Claude Code CLI (it discovers lock files at startup)
+```
+
+</details>
+
 ---
 
 ## Platform Support
