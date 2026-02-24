@@ -21,15 +21,53 @@ log() {
   echo "[claude-code-cli-ide install] $*"
 }
 
-# Verify server binary
+# Ensure server binary exists — download from GitHub Releases if missing
+download_server_binary() {
+  local os arch asset_name repo url
+  repo="beregcamlost/claude-code-cli-ide"
+
+  os="$(uname -s)"
+  arch="$(uname -m)"
+
+  case "$os" in
+    Darwin) os="darwin" ;;
+    Linux)  os="linux" ;;
+    *)      log "ERROR: Unsupported OS: $os"; exit 1 ;;
+  esac
+
+  case "$arch" in
+    arm64|aarch64) arch="aarch64" ;;
+    x86_64)        arch="x86_64" ;;
+    *)             log "ERROR: Unsupported architecture: $arch"; exit 1 ;;
+  esac
+
+  asset_name="claude-code-server-${os}-${arch}.tar.gz"
+
+  # Get latest release download URL
+  url="https://github.com/${repo}/releases/latest/download/${asset_name}"
+
+  log "Downloading server binary: $asset_name"
+  mkdir -p "$HOME/.local/bin"
+
+  local tmpdir
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' RETURN
+
+  if ! curl -fSL --progress-bar -o "$tmpdir/$asset_name" "$url"; then
+    log "ERROR: Failed to download $url"
+    log "Check https://github.com/${repo}/releases for available binaries"
+    exit 1
+  fi
+
+  tar -xzf "$tmpdir/$asset_name" -C "$tmpdir"
+  mv "$tmpdir/claude-code-server" "$SERVER_BIN"
+  chmod +x "$SERVER_BIN"
+  log "Downloaded and installed: $SERVER_BIN"
+}
+
 if [[ ! -x "$SERVER_BIN" ]]; then
-  log "ERROR: Server binary not found at $SERVER_BIN"
-  log "Build it:"
-  log "  cd $CC_ZED_DIR/server"
-  log "  NATIVE_TARGET=\$(rustc -vV | grep host | awk '{print \$2}')"
-  log "  cargo build --release --target \"\$NATIVE_TARGET\""
-  log "  cp \"target/\$NATIVE_TARGET/release/claude-code-server\" $SERVER_BIN"
-  exit 1
+  log "Server binary not found at $SERVER_BIN — downloading from GitHub Releases"
+  download_server_binary
 fi
 log "Server binary: $SERVER_BIN ($(ls -lh "$SERVER_BIN" | awk '{print $5}'))"
 

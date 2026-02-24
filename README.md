@@ -87,7 +87,7 @@ Supported platforms: macOS (Apple Silicon, Intel), Linux (x86_64, aarch64).
 
 ### Optional: Install services
 
-The monitor daemon and language updater are optional background services:
+The monitor daemon and language updater are optional background services. The install script auto-downloads the server binary if it's not already built locally.
 
 ```bash
 git clone https://github.com/beregcamlost/claude-code-cli-ide.git ~/claude-code-cli-ide
@@ -103,9 +103,23 @@ bash ~/claude-code-cli-ide/scripts/install.sh
 
 ## Dev Install
 
-For local development, build the server binary yourself. The extension prefers a local binary on `$PATH` over the auto-downloaded one.
+For local development, one script handles everything — installs Rust if needed, builds the server binary, cleans up old installs, and sets up background services:
 
-### Prerequisites
+```bash
+git clone https://github.com/beregcamlost/claude-code-cli-ide.git ~/claude-code-cli-ide
+bash ~/claude-code-cli-ide/scripts/setup.sh
+```
+
+Then install the dev extension in Zed:
+
+1. Open **Zed**
+2. `Cmd+Shift+P` > **zed: install dev extension**
+3. Select `~/claude-code-cli-ide/`
+
+> Zed builds the WASM extension automatically. The dev binary on `$PATH` takes priority over the auto-downloaded one.
+
+<details>
+<summary><strong>Prerequisites (for manual setup)</strong></summary>
 
 | Requirement | Details |
 |-------------|---------|
@@ -114,7 +128,12 @@ For local development, build the server binary yourself. The extension prefers a
 | **WASM target** | `rustup target add wasm32-wasip2` |
 | **Claude Code** | [CLI installed](https://docs.anthropic.com/en/docs/claude-code) |
 
-### Step 1 — Build the server binary
+</details>
+
+<details>
+<summary><strong>Manual build steps</strong></summary>
+
+#### Build the server binary
 
 ```bash
 cd ~/claude-code-cli-ide/server
@@ -126,19 +145,13 @@ cp "target/$NATIVE_TARGET/release/claude-code-server" ~/.local/bin/claude-code-s
 
 > Make sure `~/.local/bin` is on your `$PATH`
 
-### Step 2 — Install services
+#### Install services
 
 ```bash
 bash ~/claude-code-cli-ide/scripts/install.sh
 ```
 
-### Step 3 — Install the dev extension
-
-1. Open **Zed**
-2. `Cmd+Shift+P` > **zed: install dev extension**
-3. Select `~/claude-code-cli-ide/`
-
-> Zed builds the WASM extension automatically.
+</details>
 
 ---
 
@@ -248,7 +261,8 @@ claude-code-cli-ide/
 │               └── workspace.rs Workspace tools
 │
 └── scripts/
-    ├── install.sh              Service installer (macOS + Linux)
+    ├── setup.sh                One-command dev setup (cleanup + build + services)
+    ├── install.sh              Service installer (macOS + Linux, auto-downloads binary)
     ├── monitor.sh              Zed process monitor daemon
     └── update-languages.sh     Language list updater
 ```
