@@ -5,7 +5,7 @@ use zed_extension_api::{
 
 const SERVER_BINARY: &str = "claude-code-server-zed";
 const GITHUB_REPO: &str = "beregcamlost/claude-code-cli-ide";
-const EXTENSION_VERSION: &str = "0.1.2";
+const EXTENSION_VERSION: &str = "0.1.3";
 
 struct ClaudeCodeExtension;
 

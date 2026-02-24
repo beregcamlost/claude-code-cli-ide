@@ -1,6 +1,6 @@
 [package]
 name = "claude-code-server"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Antoniojose Figueroa <beregcamlost@gmail.com>"]
 description = "Claude Code server binary for claude-code-cli-ide extension"
